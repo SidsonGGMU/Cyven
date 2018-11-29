@@ -12,6 +12,7 @@ import { DialogShareListComponent } from './dialog-share-list/dialog-share-list.
 import { SearchMovieComponent } from './search-movie/search-movie.component';
 import { DialogCreateListComponent } from './dialog-create-list/dialog-create-list.component';
 import { AllListsManagerComponent } from './all-lists-manager/all-lists-manager.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AllListsManagerComponent } from './all-lists-manager/all-lists-manager.
     DialogShareListComponent,
     SearchMovieComponent,
     DialogCreateListComponent,
-    AllListsManagerComponent
+    AllListsManagerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
