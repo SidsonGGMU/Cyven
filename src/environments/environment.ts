@@ -5,15 +5,16 @@
 export const environment = {
   production: false,
   showRouting: true,
-  firebase:  {
-    apiKey: 'AIzaSyDGrN4ZRCftbdV2txWAlO4UToyFu-AMceU',
-    authDomain: 'ihm-m1-miage-f78a1.firebaseapp.com',
-    databaseURL: 'https://ihm-m1-miage-f78a1.firebaseio.com',
-    projectId: 'ihm-m1-miage-f78a1',
-    storageBucket: 'ihm-m1-miage-f78a1.appspot.com',
-    messagingSenderId: '603840085345'
+  firebase: {
+    apiKey: 'AIzaSyCaUE7alJcQcxzta-Ds5PzE03IC7mJHLv4',
+    authDomain: 'ihm-projetct.firebaseapp.com',
+    databaseURL: 'https://ihm-projetct.firebaseio.com',
+    projectId: 'ihm-projetct',
+    storageBucket: 'ihm-projetct.appspot.com',
+    messagingSenderId: '769779350372'
   }
-};
+}
+;
 
 /*
  * For easier debugging in development mode, you can import the following file
