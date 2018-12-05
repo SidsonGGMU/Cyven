@@ -16,6 +16,9 @@ import { SearchMovieComponent } from './search-movie/search-movie.component';
 import { DialogCreateListComponent } from './dialog-create-list/dialog-create-list.component';
 import { AllListsManagerComponent } from './all-lists-manager/all-lists-manager.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TmdbService } from './tmdb.service';
+import { ListsManagerService } from './lists-manager.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,11 +36,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [TmdbService,ListsManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

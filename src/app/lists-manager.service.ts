@@ -50,9 +50,7 @@ export class ListsManagerService {
     }
   }
 
-  /** Since there is no specific task in the updating list functionality
-   * We consider that changing the name is (might be?) enough
-   */
+  /** Updating the  name of the list. */
   updateList(listName: string) {
     const index = LISTS_DATA.map(l => l.name).indexOf(listName);
     LISTS_DATA[index].name = listName;
