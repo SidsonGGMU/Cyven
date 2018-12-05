@@ -12,7 +12,7 @@ const routes: Routes = [
     component: AllListsManagerComponent
   },
   {
-    path: 'listes/:id',
+    path: 'listes/:name',
     component: ListDetailsComponent
   },
   {

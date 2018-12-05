@@ -1,7 +1,11 @@
-.grid {
+.grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     width: 100%;
     background-color: aqua;
+}
+
+.listElement{
+    cursor: pointer;
 }
