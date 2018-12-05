@@ -6,15 +6,18 @@ import { MovieResponse } from "../tmdb-data/Movie";
  */
 export const LISTS_DATA: List[] = [
   {
+    owner : "Zakaria",
     name: 'Ma superliste 1',
     movies: []
   },
   {
+    owner : "Noureddine",
     name: 'Ma superliste 2',
     movies: []
   },
   {
-    name: 'Ma superliste 3',
+    owner : "Yves",
+    name : 'Ma superliste 3',
     movies: []
   }
 ];
