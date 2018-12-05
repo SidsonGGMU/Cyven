@@ -1,3 +1,9 @@
 <div class="grid">
-  <div *ngFor="let list of lists" [routerLink]="['/listes', list.name]" class="listElement">{{list.name}} ( {{list.owner}}</div>
+  <div *ngFor="let list of lists" >
+    <ul>
+      <li [routerLink]="['/listes', list.name]" class="listElement">  
+        {{list.name}} ({{list.owner}})
+      </li>
+    </ul>
+  </div>
 </div>

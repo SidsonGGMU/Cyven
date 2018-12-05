@@ -1,11 +1,9 @@
-.grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    width: 100%;
-    background-color: aqua;
-}
-
 .listElement{
     cursor: pointer;
 }
+
+/* .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1px;
+} */

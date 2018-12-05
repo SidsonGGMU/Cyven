@@ -17,7 +17,7 @@ export class AllListsManagerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.liste_service.getData().subscribe (data => {
-      this.lists = data; 
+      console.log('Lists : ', this.lists = data); 
     })
   }
 
