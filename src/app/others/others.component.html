@@ -1,3 +1,28 @@
-<p>
-  others works!
-</p>
+<div class="flexInfo" style="margin-bottom : 30px;">
+  <button mat-raised-button (click)="displayTrends = 'movie'">Movies</button>
+  <button mat-raised-button (click)="displayTrends = 'TV'">TV</button>
+</div>
+
+<main *ngIf="_trendsMovie && _trendsTV ; else  WaitBro">
+
+  <section class="to_point" *ngIf="displayTrends == 'movie'">
+      <mat-card *ngFor="let movie_element of getTrendingMovies()" [routerLink]="['/film', movie_element.id]">
+          <img mat-card-image [src]="getPath(movie_element.poster_path)" />
+          <mat-card-content>{{movie_element.title}}</mat-card-content>
+      </mat-card>
+  </section>
+
+  <section *ngIf="displayTrends == 'TV'">
+      <mat-card *ngFor="let tv_element of getTrendingTV()">
+          <img mat-card-image [src]="getPath(tv_element.poster_path)" />
+          <mat-card-footer>
+              <p>{{tv_element.original_name}}</p>
+          </mat-card-footer>
+      </mat-card>
+  </section>
+
+</main>
+
+<ng-template #WaitBro>
+  <mat-spinner class="centered_spinner"></mat-spinner>
+</ng-template>

@@ -1,0 +1,110 @@
+.example-list {
+width: 500px;
+max-width: 100%;
+border: solid 1px #ccc;
+min-height: 60px;
+display: block;
+background: white;
+border-radius: 4px;
+overflow: hidden;
+}
+
+.example-box {
+padding: 20px 10px;
+border-bottom: solid 1px #ccc;
+color: rgba(0, 0, 0, 0.87);
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+box-sizing: border-box;
+cursor: move;
+background: white;
+font-size: 14px;
+}
+
+.cdk-drag-preview {
+width: 100px;
+height: 150px;
+box-sizing: border-box;
+border-radius: 4px;
+box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+        0 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+opacity: 0;
+}
+
+.cdk-drag-animating {
+transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.action {
+text-align: left;
+color: rgba(195, 7, 7, 0.75);
+font-size: small;
+display: flex;
+flex-direction: row;
+align-content: space-between;
+}
+
+.add {
+position: fixed;
+bottom: 40px;
+right: 4%;
+}
+
+.header {
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;
+justify-content: flex-start;
+align-items: center;
+align-content: center;
+}
+
+.actions {
+text-align: left;
+color: rgba(85, 83, 83, 0.75);
+font-size: small;
+cursor: pointer;
+
+}
+.header h3, mat-icon {
+margin-left: 10px;
+}
+
+.content {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+grid-gap: 20px;
+}
+
+.card {
+max-width: 130px;
+cursor: pointer;
+}
+
+.card img {
+height: 170px;
+}
+
+.card .card-content {
+padding: 5px 0 5px 0;
+display: flex;
+height: 30px;
+}
+
+.movie-container {
+position: relative;
+}

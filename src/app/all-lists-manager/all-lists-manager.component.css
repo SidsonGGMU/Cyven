@@ -1,9 +1,40 @@
-.listElement{
-    cursor: pointer;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 10px ;
+  margin: 30px 5% 0 0;
+} 
+
+.add {
+position: fixed;
+bottom: 40px;
+right: 4%;
 }
 
-/* .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1px;
-} */
+.header > h3 {
+text-align: start;
+}
+
+
+.actions {
+text-align: left;
+color: rgba(85, 83, 83, 0.75);
+font-size: small;
+display: flex;
+flex-direction: row;
+align-content: space-between;
+}
+.actions > mat-icon {
+margin-left: 10px;
+}
+.main_info {
+  vertical-align: middle;
+}
+
+.listElement {
+border-radius: 10px 10px 10px 10px;
+cursor: pointer;
+background-color: white;
+box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+margin-bottom: 25px;
+}

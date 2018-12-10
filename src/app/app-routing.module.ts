@@ -5,6 +5,7 @@ import { ListDetailsComponent } from './list-details/list-details.component';
 import { SearchMovieComponent } from './search-movie/search-movie.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { OthersComponent } from './others/others.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchMovieComponent
+  },
+  {
+    path: 'others',
+    component: OthersComponent
   },
   {
     path: '**',

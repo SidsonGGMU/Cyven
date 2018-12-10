@@ -1,3 +1,10 @@
-<p>
-  dialog-create-list works!
-</p>
+<h1 mat-dialog-title>Nouvelle liste</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.listname" (keyup.enter)="closeDialog()" placeholder="Nom de la liste">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" color="warn">Annuler</button>
+  <button mat-raised-button (click)="closeDialog()" color="primary">Créer</button>
+</div>

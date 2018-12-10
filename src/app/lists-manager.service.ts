@@ -1,14 +1,14 @@
-import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {List} from './list-data/List';
-import {TmdbService} from './tmdb.service';
-import {LISTS_DATA} from './list-data/List-mockup';
-import {MovieResult} from './tmdb-data/searchMovie';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { List } from './list-data/List';
+import { LISTS_DATA } from './list-data/List-mockup';
+import { MovieResult } from './tmdb-data/searchMovie';
+import { UserServiceService } from './user-service.service';
 
 @Injectable()
 export class ListsManagerService {
 
-  constructor(private _tmdb: TmdbService) {
+  constructor(private userService: UserServiceService) {
   }
 
   getData(): Observable<List[]> {
@@ -18,21 +18,35 @@ export class ListsManagerService {
   /** Adding a specific movie to a list*/
   pushMovieToList(listName: string, movie: MovieResult) {
     LISTS_DATA.find(list => list.name === listName).movies.push(movie);
-    console.log('Ajouté avec succès à la liste: ', movie, listName);
   }
 
   pushMoviesToList(listName: string, movies: MovieResult[]) {
     movies.map(m => this.pushMovieToList(listName, m));
-    console.log('Films ajoutés avec succès à la liste: ', movies, listName);
+  }
+
+  /** Deleting a movie from a list */
+  removeMovie(list: List, movie: MovieResult) : List {
+    list.movies.forEach( (m, index) => {
+      if(m === movie){
+       list.movies.splice(index,1);
+       return;
+      }
+    });
+    return list;
+  }
+
+  deleteMovie(list) {
+    const list_index = LISTS_DATA.findIndex(l => l.name == list.name);
+    LISTS_DATA[list_index] = list;
   }
 
 
   /** Preparing the list to push in the containing array. */
-  pushNewList(listName: string) {
-    listName === '' ?
-      listName = 'Ma superliste ' + (LISTS_DATA.length + 1) :
-      listName = listName;
-    this.addList({name: listName, movies: []});
+  pushNewList(list: List) {
+    list.name === '' ?
+      list.name = 'Ma superliste ' + (LISTS_DATA.length + 1) :
+      list.name = list.name;
+    this.addList(list);
   }
 
   /** Adding the list in the corresponding array*/
@@ -46,20 +60,18 @@ export class ListsManagerService {
 
       // Sorting the list for display's sake
       LISTS_DATA.sort((l1, l2) => (l1.name > l2.name ? 1 : -1));
-      console.log('New list : ', LISTS_DATA);
     }
   }
 
   /** Updating the  name of the list. */
-  updateList(listName: string) {
-    const index = LISTS_DATA.map(l => l.name).indexOf(listName);
+  updateList(list: List, listName: string) {
+    const index = LISTS_DATA.findIndex(l => l.name == list.name);
     LISTS_DATA[index].name = listName;
   }
 
   /** Getting rid of a specific list */
   deleteList(index) {
     LISTS_DATA.splice(index, 1);
-    console.log('New spliced list : ', LISTS_DATA);
   }
 
   /** Helpful for the default list name and others*/
@@ -70,5 +82,37 @@ export class ListsManagerService {
   /** Checking if the list already exists */
   listExist(listToCheck: List): boolean {
     return (LISTS_DATA.find(list => list.name === listToCheck.name) ? true : false);
+  }
+
+  /** Checking the accessibility of a list for a member */
+  isMember(lists: List[]): List[] {
+    const current_user = this.userService.getCredentials();
+    const validList: List[] =[] ;
+    lists.map((list:List) => {
+      if (list.users_list.includes(current_user) || list.owner == current_user )
+      validList.push(list);
+    });
+    console.log("List valid:", validList);
+    return validList;
+  }
+
+  /** Adding a member to a list */
+  addMember(list: List, member: string) {
+    LISTS_DATA.find(l => l == list).users_list.push(member);
+  }
+
+  /** Taking members out of the squad ;) */
+  removeAccess(list: List, members: string[]): List {
+    const validList: string[] = list.users_list.filter((user) => {
+      return !members.includes(user);
+    });
+    list.users_list = validList;
+    return list;
+  }
+
+  /** Deleting a member from a list */
+  deleMember(list: List) {
+    const list_index = LISTS_DATA.findIndex(l => l.name == list.name);
+    LISTS_DATA[list_index] = list;
   }
 }

@@ -1,9 +1,37 @@
-<div class="grid">
-  <div *ngFor="let list of lists" >
-    <ul>
-      <li [routerLink]="['/listes', list.name]" class="listElement">  
-        {{list.name}} ({{list.owner}})
-      </li>
-    </ul>
+<div class="add">
+  <button (click)="openDialog()" mat-fab color="primary">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<div class="header">
+  <h3>Mes listes</h3>
+</div>
+<div *ngIf="load_lists">
+  <div class="grid">
+    <mat-list>
+      <div class="listElement" *ngFor="let list of lists; let ind = index" [routerLink]="['/listes', list.name]">
+        <mat-list-item *ngIf="!(list.owner === actualUser)" class="item">
+          <h4 mat-line><span style="font-weight:bolder"> {{list.name}} </span>(Partagée par: {{list.owner}})</h4>
+          <p mat-line *ngIf="!list.movies.length "> Ne contient aucun film</p>
+          <p mat-line *ngIf="list.movies.length == 1 "> {{list.movies.length}} film</p>
+          <p mat-line *ngIf="list.movies.length > 1"> {{list.movies.length}} films</p>
+          <div class="actions">
+            <mat-icon>remove_red_eye</mat-icon>
+          </div>
+        </mat-list-item>
+        <mat-list-item *ngIf="(list.owner === actualUser)" class="item">
+          <h4 mat-line>{{list.name}}</h4>
+          <p mat-line *ngIf="!list.movies.length "> Ne contient aucun film</p>
+          <p mat-line *ngIf="list.movies.length == 1 "> {{list.movies.length}} film</p>
+          <p mat-line *ngIf="list.movies.length > 1"> {{list.movies.length}} films</p>
+          <div class="actions">
+            <mat-icon>edit</mat-icon>
+            <mat-icon (click)="delete_list(list.name,key,$event)">delete</mat-icon>
+            <mat-icon (click)="share_list(list,ind,$event)">share</mat-icon>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-list>
   </div>
 </div>

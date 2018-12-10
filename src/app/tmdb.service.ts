@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {MovieQuery, MovieResponse, MovieDetails, Recommandations, Genre} from './tmdb-data/Movie';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {PersonQuery, PersonResponse, CastResponse, PersonDetails} from './tmdb-data/Person';
-import {SearchMovieQuery, SearchMovieResponse} from './tmdb-data/searchMovie';
+import {SearchMovieQuery, SearchMovieResponse, SearchContent} from './tmdb-data/searchMovie';
 import {SearchPeopleQuery, SearchPeopleResponse} from './tmdb-data/SearchPeople';
 import {TVQuery, TVResponse} from './tmdb-data/TV';
 import {SearchTVQuery, SearchTVResponse} from './tmdb-data/SearchTV';
@@ -11,6 +11,7 @@ import {TrendingQuery, TrendingResponse} from './tmdb-data/TrendingSearch';
 
 const tmdbApi = 'https://api.themoviedb.org/3';
 type HTTP_METHOD = 'GET' | 'POST' | 'DELETE' | 'PUT';
+
 
 function AlxToObjectString(data: Object): { [key: string]: string } {
   const res = {};
@@ -35,6 +36,7 @@ export class TmdbService {
     }).toPromise();
   }
 
+  public last_searched_movies : SearchContent = null;
 
   constructor(private _http: HttpClient) {
   }
@@ -148,4 +150,11 @@ export class TmdbService {
     return (path === null ? this.logo : `https://image.tmdb.org/t/p/w500${path}`);
   }
 
+  stroreLastSearched(searchResults : SearchContent){
+    this.last_searched_movies = searchResults;
+  }
+
+  getLastSearched() {
+    return this.last_searched_movies || null ;
+  }
 }

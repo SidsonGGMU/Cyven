@@ -1,3 +1,39 @@
-<p>
-  dialog-share-list works!
-</p>
+<div class="grid">
+  <div>
+    <h3>
+      Partage de " {{data.list.name}} "
+    </h3>
+    <div mat-dialog-content class="sharing_part">
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.user" (keyup.enter)="shareTo()" placeholder="Saisir le mail de l'utilisateur">
+      </mat-form-field>
+      <button mat-button (click)="shareTo()" color="primitive"><mat-icon>add</mat-icon></button>
+    </div>
+  </div>
+  <div>
+    <div class="grid-inner">
+      <div class="example-container">
+        <h4>Accès autorisé à : </h4>
+        <div cdkDropList #access_granted="cdkDropList" [cdkDropListData]="data.list.users_list"
+          [cdkDropListConnectedTo]="[to_kick]" class="example-list" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of data.list.users_list" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+      <div class="example-container">
+        <h4>A retirer de la liste :</h4>
+        <div cdkDropList #to_kick="cdkDropList" [cdkDropListData]="to_remove" [cdkDropListConnectedTo]="[access_granted]"
+          class="example-list" (cdkDropListDropped)="drop($event, 1)">
+          <div class="example-box" *ngFor="let item of to_remove" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="cancelOperation()" color="accent" [disabled]="cancel">Annuler</button>
+    <button mat-raised-button (click)="deleteMember()" color="warn">Retirer de ma liste</button>
+    </div>
+    
+  </div>
+  <div class="done">
+    <button mat-raised-button (click)="onNoClick()" color="primary">Terminer</button>
+  </div>
+</div>

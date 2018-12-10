@@ -1,3 +1,22 @@
-<p>
-  search-movie works!
-</p>
+<button mat-button [routerLink]="['/']" style="margin-top:10px"  >
+  <mat-icon>arrow_back</mat-icon>Retour sur " Mes listes "</button>
+<div class="grid">
+  <div class="search">
+    <input (keyup.enter)="searchMovie()" [(ngModel)]="query" class="textbox" placeholder="Search">
+    <div (click)="searchMovie()" class="button">
+      <i class="material-icons icone">search</i>
+    </div>
+  </div>
+
+  <div *ngIf="searchContent" class="content">
+    <div *ngFor="let movie of searchContent.searchedMovies.results" class="movie-container" [routerLink]="['/film', movie.id]">
+      <mat-card class="card ">
+        <img class="overlay" mat-card-image [src]="getPath(movie.poster_path)" alt="Movie picture">
+        <mat-card-content class="card-content">
+          <p>{{movie.original_title}}</p>
+        </mat-card-content>
+      </mat-card>
+      <button class="addButton" mat-mini-fab color="primitive" (click)="addMovie(movie,$event)"><mat-icon>add</mat-icon></button>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,40 @@
-<p>
-  list-details works!
-</p>
+<div *ngIf="myList">
+  <button mat-button [routerLink]="['/']" style="margin-top:10px">
+    <mat-icon>arrow_back</mat-icon>Retour sur " Mes listes "
+  </button>
+  <div class="header">
+    <h3>{{list.name}}</h3>
+  <div *ngIf="(list.owner === actualUser)">
+    <div class="actions">
+      <mat-icon (click)="updateName()">edit</mat-icon>
+      <mat-icon (click)="share_list($event)">share</mat-icon>
+    </div>
+  </div>
+    <div *ngIf="list.movies.length > 0" cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let movie of list.movies" cdkDrag [routerLink]="['/film', movie.id]">
+        {{movie.title}}
+        <img *cdkDragPreview [src]="getPath(movie.poster_path)" [alt]="movie.title">
+        <div class="action">
+          <mat-icon (click)="delete_list(movie,$event)">delete</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="(list.owner === actualUser)" class="add">
+    <button [routerLink]="['/search']" mat-fab color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="!(list.owner === actualUser)" class="content">
+    <div *ngFor="let movie of list.movies" class="movie-container" [routerLink]="['/film', movie.id]">
+      <mat-card class="card ">
+        <img class="overlay" mat-card-image [src]="getPath(movie.poster_path)" alt="Movie picture">
+        <mat-card-content class="card-content">
+          <p>{{movie.original_title}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

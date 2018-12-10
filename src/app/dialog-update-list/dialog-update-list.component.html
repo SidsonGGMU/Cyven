@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Nouveau nom de la liste</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data" placeholder="Nom de la liste">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" color="warn">Annuler</button>
+  <button mat-raised-button [mat-dialog-close]="data" color="primary">Changer</button>
+</div>

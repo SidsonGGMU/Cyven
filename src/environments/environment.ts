@@ -4,17 +4,15 @@
 
 export const environment = {
   production: false,
-  showRouting: true,
   firebase: {
-    apiKey: 'AIzaSyCaUE7alJcQcxzta-Ds5PzE03IC7mJHLv4',
-    authDomain: 'ihm-projetct.firebaseapp.com',
-    databaseURL: 'https://ihm-projetct.firebaseio.com',
-    projectId: 'ihm-projetct',
-    storageBucket: 'ihm-projetct.appspot.com',
-    messagingSenderId: '769779350372'
+    apiKey: "AIzaSyD151duuS1pRQXiFPzeMXfJ1nIIDOfoSTQ",
+    authDomain: "cyven-310e0.firebaseapp.com",
+    databaseURL: "https://cyven-310e0.firebaseio.com",
+    projectId: "cyven-310e0",
+    storageBucket: "cyven-310e0.appspot.com",
+    messagingSenderId: "1081614307363"
   }
-}
-;
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

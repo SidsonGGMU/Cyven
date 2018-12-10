@@ -4,5 +4,6 @@
 html , body {
     font-family: 'Montserrat', sans-serif;
     background-color: #F2F2F2;
+    color : rgb(46, 44, 44);
     margin: 0;
 }

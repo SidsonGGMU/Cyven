@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Ajouter à une liste</h1>
+<div mat-dialog-content>
+    <mat-form-field class="field">
+        <mat-select placeholder="Selectionner une liste" [(ngModel)]="data.selected">
+            <mat-option *ngFor="let liste of data.listes" [value]="liste.name">{{liste.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" color="warn">Annuler</button>
+    <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial color="primary">Ajouter</button>
+</div>

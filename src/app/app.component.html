@@ -1,8 +1,26 @@
-<div class="grid">
-  <div id="sidenav">
-    <div id="user_profile"></div>
-  </div>
-  <div>
-    <router-outlet></router-outlet>
-  </div>
+<div class="container">
+  <nav>
+    <!-- Navigation -->
+    <div id="user_profile">
+      <div *ngIf="!user">
+        <button (click)="login()" mat-raised-button color="primary">Connexion</button>
+      </div>
+      <div *ngIf="user" class="picture">
+        <img [src]="user.photoURL" />
+        <br>
+        <label>{{user.displayName}}</label>
+        <button mat-mini-fab color="primitive" (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
+      </div>
+    </div>
+    <a *ngIf="userconnected" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Listes</a>
+    <a *ngIf="userconnected" routerLink="/search" routerLinkActive="active">Ajouter un film</a>
+    <a *ngIf="userconnected" routerLink="/others" routerLinkActive="active">Autres</a>
+  </nav>
+
+  <main>
+    <!-- Main content -->
+    <router-outlet *ngIf="userconnected"></router-outlet>
+    <div *ngIf="!userconnected" class="landing_offline"> <img src="../assets/robot.png"><br><h3>Veuillez vous connecter</h3> </div>
+  </main>
+
 </div>

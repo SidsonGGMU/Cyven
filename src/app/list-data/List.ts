@@ -6,3 +6,18 @@ export interface List {
     users_list?: string [];
     owner?: string;
 }
+
+export interface DataDialog {
+    owner : string;
+    listname : string;
+}
+
+export interface DialogData {
+    listes: List[];
+    selected: string;
+}
+
+export interface DataShare {
+    list: List;
+    user: string;
+}

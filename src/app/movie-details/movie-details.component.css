@@ -1,0 +1,61 @@
+.detail {
+height : 100%;
+display: flex;
+flex-direction: column;
+text-align: start;
+}
+
+.couleurText {
+color: #3B3838;
+}
+
+.detail h2 {
+font-size: 24px;
+font-weight: bold;
+}
+
+.detail p {
+width: 80%;
+}
+
+mat-card-content {
+font-size: 1em;
+text-align: start;
+padding-top: 10px;
+
+}
+.name {
+font-weight: bold;
+margin-bottom: 0px;
+margin-top: 0px;
+display: inline-block;
+}
+
+.var {
+color: #3B3838;
+margin-bottom: 0px;
+margin-top: 0px;
+margin-left: 0.2em;
+display: inline-block;
+}
+.example-card {
+max-width: 300px;
+margin-left: 25px;
+}
+
+.grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-gap: 0px;
+margin: 60px auto;
+}
+
+.imageFilm {
+height: 450px;
+}
+
+.add {
+position: fixed;
+bottom: 40px;
+right: 4%;
+}

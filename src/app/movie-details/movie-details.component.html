@@ -1,3 +1,43 @@
-<p>
-  movie-details works!
-</p>
+<button mat-button [routerLink]="['/search']" style="margin-top:10px" >
+  <mat-icon>arrow_back</mat-icon>
+  Retour sur " Recherche "
+</button>
+<div *ngIf="movie" class="grid">
+  <div>
+    <mat-card class="example-card">
+      <img class="imageFilm" mat-card-image [src]=getPath(movieDetails.movie.poster_path) alt="Image film">
+      <mat-card-content>
+        <div>
+          <div>
+            <p class="name">Status : </p>
+            <p class="var">{{getStatus()}}</p>
+          </div>
+          <div>
+            <p class="name">Durée : </p>
+            <p class="var">{{getTime()}}</p>
+          </div>
+          <div>
+            <p class="name">Budget : </p>
+            <p class="var">${{getBudget()}}</p>
+          </div>
+          <div>
+            <p class="name">Recette : </p>
+            <p class="var">${{getRecette()}}</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div>
+    <div class="detail">
+      <h1 class="couleurText">{{movieDetails.movie.original_title}}</h1>
+      <h2 class="couleurText">Synopsis</h2>
+      <p>
+        {{movieDetails.movie.overview}}
+      </p>
+    </div>
+  </div>
+  <button class="add" (click)="addMovie()" mat-fab color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+</div>
