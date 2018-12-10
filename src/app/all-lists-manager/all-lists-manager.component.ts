@@ -46,16 +46,19 @@ export class AllListsManagerComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(() => this.loadData());
   }
 
-  delete_list(list, index: number, e: Event): void {
+  delete_list(list: List, e: Event): void {
     e.stopPropagation();
     e.preventDefault();
-    this.dialog.open(DialogDeleteListComponent, {
+    const dialogRef = this.dialog.open(DialogDeleteListComponent, {
       width: '250px',
-      data: { name: list.name, index: index }
+      data: { name: list.name }
     });
+
+
+    dialogRef.afterClosed().subscribe(()=> this.loadData());
   }
 
-  share_list(list, index:number, e: Event): void {
+  share_list(list, e: Event): void {
     e.stopPropagation();
     e.preventDefault();
     this.dialog.open(DialogShareListComponent, {

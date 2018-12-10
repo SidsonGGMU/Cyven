@@ -26,8 +26,8 @@
           <p mat-line *ngIf="list.movies.length > 1"> {{list.movies.length}} films</p>
           <div class="actions">
             <mat-icon>edit</mat-icon>
-            <mat-icon (click)="delete_list(list.name,key,$event)">delete</mat-icon>
-            <mat-icon (click)="share_list(list,ind,$event)">share</mat-icon>
+            <mat-icon (click)="delete_list(list,$event)">delete</mat-icon>
+            <mat-icon (click)="share_list(list,$event)">share</mat-icon>
           </div>
         </mat-list-item>
         <mat-divider></mat-divider>

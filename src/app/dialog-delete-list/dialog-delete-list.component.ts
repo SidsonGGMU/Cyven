@@ -21,7 +21,7 @@ export class DialogDeleteListComponent implements OnInit {
   }
 
   onYesClick() : void {
-    console.log(this.data.index);
+    console.log(this.data.name);
     this.liste_service.deleteList(this.data.name);
     this.dialogRef.close();
   }

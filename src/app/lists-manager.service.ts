@@ -70,7 +70,8 @@ export class ListsManagerService {
   }
 
   /** Getting rid of a specific list */
-  deleteList(index) {
+  deleteList(listname: string) {
+    const index = LISTS_DATA.findIndex( l => l.name == listname)
     LISTS_DATA.splice(index, 1);
   }
 

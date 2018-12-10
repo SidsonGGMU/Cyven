@@ -4,12 +4,14 @@
   </button>
   <div class="header">
     <h3>{{list.name}}</h3>
-  <div *ngIf="(list.owner === actualUser)">
-    <div class="actions">
-      <mat-icon (click)="updateName()">edit</mat-icon>
-      <mat-icon (click)="share_list($event)">share</mat-icon>
+    <div *ngIf="(list.owner === actualUser)">
+      <div class="actions">
+        <mat-icon (click)="updateName()">edit</mat-icon>
+        <mat-icon (click)="share_list($event)">share</mat-icon>
+      </div>
     </div>
   </div>
+  <div *ngIf="(list.owner === actualUser)">
     <div *ngIf="list.movies.length > 0" cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let movie of list.movies" cdkDrag [routerLink]="['/film', movie.id]">
         {{movie.title}}
